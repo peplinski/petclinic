@@ -1,11 +1,13 @@
 package pl.petclinic.bootstrap;
 
-import model.Owner;
-import model.Vet;
+import pl.petclinic.model.Owner;
+import pl.petclinic.model.Vet;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
-import services.OwnerService;
-import services.VetService;
+import pl.petclinic.model.services.OwnerService;
+import pl.petclinic.model.services.VetService;
+import pl.petclinic.model.services.map.OwnerServiceMap;
+import pl.petclinic.model.services.map.VetServiceMap;
 
 
 @Component
@@ -14,16 +16,10 @@ public class DataLoader implements CommandLineRunner {
     private final OwnerService ownerService;
     private final VetService vetService;
 
-
-
-
     public DataLoader(OwnerService ownerService, VetService vetService) {
         this.ownerService = ownerService;
         this.vetService = vetService;
     }
-
-
-
 
     @Override
     public void run(String... args) throws Exception {

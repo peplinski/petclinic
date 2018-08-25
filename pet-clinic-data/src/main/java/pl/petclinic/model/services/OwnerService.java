@@ -1,6 +1,6 @@
-package services;
+package pl.petclinic.model.services;
 
-import model.Owner;
+import pl.petclinic.model.Owner;
 
 
 

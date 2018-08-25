@@ -1,8 +1,8 @@
-package services.map;
+package pl.petclinic.model.services.map;
 
-import model.Owner;
+import pl.petclinic.model.Owner;
 import org.springframework.stereotype.Service;
-import services.OwnerService;
+import pl.petclinic.model.services.OwnerService;
 
 import java.util.Set;
 @Service
