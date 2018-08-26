@@ -1,4 +1,4 @@
-package pl.petclinic.model.services;
+package pl.petclinic.services;
 
 import pl.petclinic.model.Vet;
 
