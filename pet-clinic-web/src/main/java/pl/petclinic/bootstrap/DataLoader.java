@@ -10,6 +10,8 @@ import pl.petclinic.services.OwnerService;
 import pl.petclinic.services.PetTypeService;
 import pl.petclinic.services.VetService;
 
+import java.time.LocalDate;
+
 
 @Component
 public class DataLoader implements CommandLineRunner {
@@ -46,6 +48,13 @@ public class DataLoader implements CommandLineRunner {
         owner1.setCity("Gdynia");
         owner1.setTelephone("12212121212");
 
+        Pet chrisPet = new Pet();
+        chrisPet.setPetType(savedDogPetType);
+        chrisPet.setOwner(owner1);
+        chrisPet.setBirthDate(LocalDate.now());
+        chrisPet.setName("Szarik");
+        owner1.getPets().add(chrisPet);
+
         ownerService.save(owner1);
 
         Owner owner2= new Owner();
@@ -54,6 +63,13 @@ public class DataLoader implements CommandLineRunner {
         owner2.setAddress("Wydmowa 33");
         owner2.setCity("Gdansk");
         owner2.setTelephone("343434343434");
+
+        Pet filipCat = new Pet();
+        filipCat.setName("Rudy");
+        filipCat.setOwner(owner2);
+        filipCat.setPetType(savedCatPetType);
+        filipCat.setBirthDate(LocalDate.now());
+        owner2.getPets().add(filipCat);
 
         ownerService.save(owner2);
 
