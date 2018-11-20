@@ -36,25 +36,25 @@ public class OwnerController {
     }
 
     @GetMapping
-    public String processFindFom(Owner owner, BindingResult result, Model model) {
-        //allow parametrless Get request for /owners to return all records
+    public String processFindForm(Owner owner, BindingResult result, Model model) {
+        // allow parameterless GET request for /owners to return all records
         if (owner.getLastName() == null) {
-            owner.setLastName("");//empty string signifies broadest possible search
+            owner.setLastName(""); // empty string signifies broadest possible search
         }
 
-        //find owners by last name
+        // find owners by last name
         List<Owner> results = ownerService.findAllByLastNameLike("%" + owner.getLastName() + "%");
 
         if (results.isEmpty()) {
-            //no owners found
+            // no owners found
             result.rejectValue("lastName", "notFound", "not found");
             return "owners/findOwners";
         } else if (results.size() == 1) {
-            //1 owner found
+            // 1 owner found
             owner = results.get(0);
             return "redirect:/owners/" + owner.getId();
         } else {
-            //multiple owners found
+            // multiple owners found
             model.addAttribute("selections", results);
             return "owners/ownersList";
         }
@@ -68,8 +68,8 @@ public class OwnerController {
     }
 
     @GetMapping("/new")
-    public String initCreationForm(Model model){
-        model.addAttribute("owner",Owner.builder().build());
+    public String initCreationForm(Model model) {
+        model.addAttribute("owner", Owner.builder().build());
         return VIEWS_OWNER_CREATE_OR_UPDATE_FORM;
     }
 
@@ -78,7 +78,7 @@ public class OwnerController {
         if (result.hasErrors()) {
             return VIEWS_OWNER_CREATE_OR_UPDATE_FORM;
         } else {
-            Owner savedOwner =  ownerService.save(owner);
+            Owner savedOwner = ownerService.save(owner);
             return "redirect:/owners/" + savedOwner.getId();
         }
     }
