@@ -22,7 +22,7 @@ public class PetMapService extends AbstractMapService<Pet,Long> implements PetSe
 
     @Override
     public Pet findById(Long id) {
-        return null;
+        return super.findById(id);
     }
     @Override
     public void deleteById(Long id) {
